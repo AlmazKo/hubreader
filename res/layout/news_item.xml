@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="150dp" android:background="@android:drawable/picture_frame"
+              style="@style/post_block" android:clickable="true" android:focusable="true" android:id="@+id/post">
+
+    <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:id="@+id/preview" android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true" android:src="@drawable/ic_launcher"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title" android:text="Заголовок" style="@style/post_title"
+            android:layout_alignParentLeft="false" android:layout_alignParentTop="true"
+            android:layout_alignTop="@+id/preview"
+            android:layout_toRightOf="@+id/preview" android:layout_alignParentRight="true"/>
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/content" android:layout_gravity="center_horizontal"
+            android:text="Много букв контента.Много букв контента. Много букв контента. Много букв контента. Много букв контента.  "
+            android:clickable="true" android:layout_alignParentLeft="false"
+            android:layout_alignParentTop="false" android:layout_below="@id/title"
+            android:layout_toRightOf="@+id/preview" android:layout_alignParentBottom="true"/>
+</RelativeLayout>
