@@ -5,7 +5,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import com.example.myapp.data.MyContentProvider;
 import com.example.myapp.data.Posts;
 import com.example.myapp.task.RssReader;
@@ -63,5 +65,7 @@ public class MyActivity extends Activity {
         listView.setAdapter(adapter);
         NewsProvider.news = result;
 
+        ProgressBar loader = (ProgressBar) findViewById(R.id.loader);
+        loader.setVisibility(View.GONE);
     }
 }

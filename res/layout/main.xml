@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#425f90">
+              android:background="#ffd2d2d2">
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -27,6 +27,10 @@
                 android:id="@+id/events" android:layout_gravity="center_vertical" style="@style/menu_item"/>
 
     </LinearLayout>
+    <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loader" android:layout_gravity="center_horizontal"/>
     <ListView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"

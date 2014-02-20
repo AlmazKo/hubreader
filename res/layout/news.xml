@@ -4,19 +4,10 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent" android:baselineAligned="false" style="@style/post_block">
-
-
-    <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:fillViewport="true">
         <WebView
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/content" android:layout_gravity="center_horizontal"
-                android:text="Много букв контента.Много букв контента. Много букв контента. Много букв контента. Много букв контента.  "
-                android:scrollbars = "vertical"
-                />
-    </ScrollView>
+                android:scrollbars = "vertical" />
+
 </LinearLayout>
