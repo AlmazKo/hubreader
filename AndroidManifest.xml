@@ -20,6 +20,6 @@
         <activity android:name=".NewsActivity"/>
 
 
-        <provider android:name="com.example.myapp.data.MyContentProvider"  android:authorities="com.example.myapp.data.contentprovider"/>
+        <provider android:name=".data.PostProvider"  android:authorities="com.example.myapp.data.contentprovider"/>
     </application>
 </manifest>

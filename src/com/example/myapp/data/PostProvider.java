@@ -13,9 +13,9 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
 
-public class MyContentProvider extends ContentProvider {
+public class PostProvider extends ContentProvider {
 
-    private MyDatabaseHelper dbHelper;
+    private DatabaseHelper dbHelper;
 
     private static final int ALL_POSTS = 1;
     private static final int SINGLE_POST = 2;
@@ -43,7 +43,7 @@ public class MyContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
         // get access to the database helper
-        dbHelper = new MyDatabaseHelper(getContext());
+        dbHelper = new DatabaseHelper(getContext());
         return false;
     }
 
@@ -76,7 +76,7 @@ public class MyContentProvider extends ContentProvider {
 //            default:
 //                throw new IllegalArgumentException("Unsupported URI: " + uri);
 //        }
-        long id = db.insert(Posts.TABLE_NAME, null, values);
+        long id = db.insert(Post.TABLE_NAME, null, values);
 //        getContext().getContentResolver().notifyChange(uri, null);
         return Uri.parse(CONTENT_URI + "/" + id);
     }
@@ -93,7 +93,7 @@ public class MyContentProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(Posts.TABLE_NAME);
+        queryBuilder.setTables(Post.TABLE_NAME);
 
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:
@@ -101,7 +101,7 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                queryBuilder.appendWhere(Posts._ID + "=" + id);
+                queryBuilder.appendWhere(Post._ID + "=" + id);
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
@@ -127,14 +127,14 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                selection = Posts._ID + "=" + id
+                selection = Post._ID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int deleteCount = db.delete(Posts.TABLE_NAME, selection, selectionArgs);
+        int deleteCount = db.delete(Post.TABLE_NAME, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return deleteCount;
     }
@@ -152,14 +152,14 @@ public class MyContentProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                selection = Posts._ID + "=" + id
+                selection = Post._ID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int updateCount = db.update(Posts.TABLE_NAME, values, selection, selectionArgs);
+        int updateCount = db.update(Post.TABLE_NAME, values, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return updateCount;
     }
