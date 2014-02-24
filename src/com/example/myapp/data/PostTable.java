@@ -3,7 +3,7 @@ package com.example.myapp.data;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
-public class Post implements BaseColumns {
+public class PostTable implements BaseColumns {
 
     public static final String TABLE_NAME = "posts";
 

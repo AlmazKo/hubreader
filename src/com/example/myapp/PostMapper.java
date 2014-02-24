@@ -3,7 +3,7 @@ package com.example.myapp;
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import static com.example.myapp.data.Post.*;
+import static com.example.myapp.data.PostTable.*;
 
 /**
  * @author Almazko

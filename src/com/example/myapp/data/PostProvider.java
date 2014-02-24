@@ -76,7 +76,7 @@ public class PostProvider extends ContentProvider {
 //            default:
 //                throw new IllegalArgumentException("Unsupported URI: " + uri);
 //        }
-        long id = db.insert(Post.TABLE_NAME, null, values);
+        long id = db.insert(PostTable.TABLE_NAME, null, values);
 //        getContext().getContentResolver().notifyChange(uri, null);
         return Uri.parse(CONTENT_URI + "/" + id);
     }
@@ -93,7 +93,7 @@ public class PostProvider extends ContentProvider {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-        queryBuilder.setTables(Post.TABLE_NAME);
+        queryBuilder.setTables(PostTable.TABLE_NAME);
 
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:
@@ -101,7 +101,7 @@ public class PostProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                queryBuilder.appendWhere(Post._ID + "=" + id);
+                queryBuilder.appendWhere(PostTable._ID + "=" + id);
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
@@ -127,14 +127,14 @@ public class PostProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                selection = Post._ID + "=" + id
+                selection = PostTable._ID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int deleteCount = db.delete(Post.TABLE_NAME, selection, selectionArgs);
+        int deleteCount = db.delete(PostTable.TABLE_NAME, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return deleteCount;
     }
@@ -152,14 +152,14 @@ public class PostProvider extends ContentProvider {
                 break;
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
-                selection = Post._ID + "=" + id
+                selection = PostTable._ID + "=" + id
                         + (!TextUtils.isEmpty(selection) ?
                         " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI: " + uri);
         }
-        int updateCount = db.update(Post.TABLE_NAME, values, selection, selectionArgs);
+        int updateCount = db.update(PostTable.TABLE_NAME, values, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return updateCount;
     }

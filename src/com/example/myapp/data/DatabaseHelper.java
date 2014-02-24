@@ -15,11 +15,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Post.onCreate(db);
+        PostTable.onCreate(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Post.onUpgrade(db, oldVersion, newVersion);
+        PostTable.onUpgrade(db, oldVersion, newVersion);
     }
 }

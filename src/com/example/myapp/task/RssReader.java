@@ -44,7 +44,7 @@ public class RssReader extends AsyncTask<String, Integer, List<Post>> {
             }
         }
         if (result != null) {
-            activity.showData(result);
+//            activity.showData(result);
         } else {
             Log.v("sss_err", "error task");
         }
