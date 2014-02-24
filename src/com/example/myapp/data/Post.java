@@ -9,8 +9,8 @@ public class Post implements BaseColumns {
 
     public static final String LINK = "link";
     public static final String TITLE = "title";
-    private static final String DESCRIPTION = "description";
-    private static final String DATE_CREATE = "date_create";
+    public static final String DESCRIPTION = "description";
+    public static final String DATE_CREATE = "date_create";
 
 
     private static final String DATABASE_CREATE =
@@ -27,7 +27,6 @@ public class Post implements BaseColumns {
 
     public static void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS posts");
         onCreate(db);
     }
 

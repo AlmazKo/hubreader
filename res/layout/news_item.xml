@@ -10,7 +10,20 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:id="@+id/preview" android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" android:src="@drawable/ic_launcher"/>
+            android:layout_alignParentTop="true" android:longClickable="true" android:textAlignment="center"/>
+
+
+    <TextView
+            android:id="@+id/previewLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/preview"
+            android:layout_alignTop="@+id/preview"
+            android:layout_alignRight="@+id/preview"
+            android:layout_alignBottom="@+id/preview"
+            android:gravity="center"
+            android:text="Loading ..."
+            style="@style/preview_title"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

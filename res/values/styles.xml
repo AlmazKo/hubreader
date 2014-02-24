@@ -3,20 +3,30 @@
     <style name="post_title">
         <item name="android:layout_marginTop">2dp</item>
         <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">#ff4b545d</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#ff006a9b</item>
     </style>
+
     <style name="post_block">
         <item name="android:layout_margin">0dp</item>
     </style>
 
-
     <style name="menu_item">
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_margin">5dp</item>
-        <item name="android:textColor">#ff4b545d</item>
+        <item name="android:textColor">#ffefefef</item>
         <item name="android:textSize">25sp</item>
+        <item name="android:shadowColor">#000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">4</item>
+    </style>
+
+    <style name="preview_title">
+        <item name="android:textColor">#aaa</item>
+        <item name="android:textStyle">italic</item>
     </style>
 
 </resources>

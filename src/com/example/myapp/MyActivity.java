@@ -1,12 +1,15 @@
 package com.example.myapp;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import com.example.myapp.data.PostProvider;
 import com.example.myapp.task.RssReader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyActivity extends Activity {
@@ -20,8 +23,17 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        RssReader task = new RssReader(this);
-        task.execute();
+        Cursor cursor = getContentResolver().query(PostProvider.CONTENT_URI, null, null, null, null);
+
+        ArrayList<Post> posts = new ArrayList<>();
+
+        while (cursor.moveToNext()) {
+            posts.add(PostMapper.toPost(cursor));
+        }
+        showData(posts);
+
+//        RssReader task = new RssReader(this);
+//        task.execute();
     }
 
     public void showData(List<com.example.myapp.Post> result) {

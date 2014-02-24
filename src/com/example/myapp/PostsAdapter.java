@@ -28,6 +28,7 @@ public class PostsAdapter extends BaseAdapter {
         TextView title;
         TextView content;
         ImageView preview;
+        TextView previewLoader;
         View parent;
     }
 
@@ -71,6 +72,7 @@ public class PostsAdapter extends BaseAdapter {
             holder.title = (TextView) view.findViewById(R.id.title);
             holder.content = (TextView) view.findViewById(R.id.content);
             holder.preview = (ImageView) view.findViewById(R.id.preview);
+            holder.previewLoader = (TextView) view.findViewById(R.id.previewLoader);
             holder.parent = view.findViewById(R.id.post);
             view.setTag(holder);
         } else {
@@ -94,10 +96,12 @@ public class PostsAdapter extends BaseAdapter {
 
 
         if (post.imageLink != null) {
+            holder.preview.setImageResource(R.drawable.ic_launcher);
             ImageLoader task = new ImageLoader(holder.preview);
             task.execute(post.imageLink);
         }  else {
-            holder.preview.setImageResource(R.drawable.ic_launcher);
+            holder.previewLoader.setVisibility(View.GONE);
+            holder.preview.setVisibility(View.GONE);
         }
 
         return view;
