@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import com.example.myapp.data.PostLoader;
-import com.example.myapp.task.RssReader;
+import com.github.hubreader.data.PostLoader;
+import com.github.hubreader.task.RssReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class MyActivity extends Activity implements LoaderManager.LoaderCallback
 
     }
 
-    public void showData(List<com.example.myapp.Post> result) {
+    public void showData(List<com.github.hubreader.Post> result) {
 
         PostsAdapter adapter = new PostsAdapter(result, this);
 

@@ -1,4 +1,4 @@
-package com.example.myapp.task;
+package com.github.hubreader.task;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

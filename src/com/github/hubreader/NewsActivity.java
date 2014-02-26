@@ -1,8 +1,8 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import android.app.Activity;
 import android.os.Bundle;
-import com.example.myapp.task.HtmlPageReader;
+import com.github.hubreader.task.HtmlPageReader;
 
 /**
  * @author Almazko

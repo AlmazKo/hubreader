@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import java.io.IOException;
 import java.io.InputStream;

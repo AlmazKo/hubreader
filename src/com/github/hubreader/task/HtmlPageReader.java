@@ -1,10 +1,10 @@
-package com.example.myapp.task;
+package com.github.hubreader.task;
 
 import android.os.AsyncTask;
 import android.util.Log;
 import android.webkit.WebView;
-import com.example.myapp.NewsActivity;
-import com.example.myapp.R;
+import com.github.hubreader.NewsActivity;
+import com.github.hubreader.R;
 
 import java.io.IOException;
 import java.net.URL;

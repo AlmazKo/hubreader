@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import java.util.List;
 

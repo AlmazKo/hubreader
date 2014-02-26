@@ -1,4 +1,4 @@
-package com.example.myapp.data;
+package com.github.hubreader.data;
 
 /**
  * @author Almazko

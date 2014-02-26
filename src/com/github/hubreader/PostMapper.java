@@ -1,9 +1,9 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 
-import static com.example.myapp.data.PostTable.*;
+import static com.github.hubreader.data.PostTable.*;
 
 /**
  * @author Almazko

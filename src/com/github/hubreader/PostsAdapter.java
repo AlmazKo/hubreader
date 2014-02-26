@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.myapp.task.ImageLoader;
+import com.github.hubreader.task.ImageLoader;
 
 import java.util.List;
 

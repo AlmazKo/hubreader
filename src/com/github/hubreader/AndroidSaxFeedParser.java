@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import android.sax.Element;
 import android.sax.EndElementListener;

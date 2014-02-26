@@ -1,4 +1,4 @@
-package com.example.myapp;
+package com.github.hubreader;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -7,7 +7,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.myapp.BaseFeedParser.*;
+import static com.github.hubreader.BaseFeedParser.*;
 
 /**
  * @author Almazko
