@@ -12,21 +12,32 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
+import com.github.hubreader.AndroidSaxFeedParser;
+import com.github.hubreader.Post;
+import com.github.hubreader.PostMapper;
+import com.github.hubreader.task.RssReader;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 public class PostProvider extends ContentProvider {
 
     private DatabaseHelper dbHelper;
 
-    private static final int ALL_POSTS = 1;
-    private static final int SINGLE_POST = 2;
+    private static final int SINGLE_POST = 1;
+    private static final int ALL_POSTS = 2;
+    private static final int NEW_POSTS = 3;
+
 
     // authority is the symbolic name of your provider
     // To avoid conflicts with other providers, you should use
     // Internet domain ownership (in reverse) as the basis of your provider authority.
-    private static final String AUTHORITY = "com.example.myapp.data.contentprovider";
+    private static final String AUTHORITY = "com.github.hubreader.data.contentprovider";
 
     // create content URIs from the authority by appending path to database table
-    public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/posts");
+    public static final Uri URI_POSTS = Uri.parse("content://" + AUTHORITY + "/posts");
+    public static final Uri URI_NEW_POSTS = Uri.parse("content://" + AUTHORITY + "/posts/new");
 
     // a content URI pattern matches content URIs using wildcard characters:
     // *: Matches a string of any valid characters of any length.
@@ -35,8 +46,9 @@ public class PostProvider extends ContentProvider {
 
     static {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
-        uriMatcher.addURI(AUTHORITY, "posts", ALL_POSTS);
         uriMatcher.addURI(AUTHORITY, "posts/#", SINGLE_POST);
+        uriMatcher.addURI(AUTHORITY, "posts", ALL_POSTS);
+        uriMatcher.addURI(AUTHORITY, "posts/new", NEW_POSTS);
     }
 
     // system calls onCreate() when it starts up the provider.
@@ -56,8 +68,10 @@ public class PostProvider extends ContentProvider {
                 return "vnd.android.cursor.dir/vnd.com.example.myapp.data.posts";
             case SINGLE_POST:
                 return "vnd.android.cursor.item/vnd.com.example.myapp.data.posts";
+            case NEW_POSTS:
+                return "vnd.android.cursor.item/vnd.com.example.myapp.data.posts.new";
             default:
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
+                throw new IllegalArgumentException("Unsupported URI1: " + uri);
         }
     }
 
@@ -74,11 +88,11 @@ public class PostProvider extends ContentProvider {
 //                //do nothing
 //                break;
 //            default:
-//                throw new IllegalArgumentException("Unsupported URI: " + uri);
+//                throw new IllegalArgumentException("Unsupported URI2: " + uri);
 //        }
         long id = db.insert(PostTable.TABLE_NAME, null, values);
 //        getContext().getContentResolver().notifyChange(uri, null);
-        return Uri.parse(CONTENT_URI + "/" + id);
+        return Uri.parse(URI_POSTS + "/" + id);
     }
 
     // The query() method must return a Cursor object, or if it fails,
@@ -95,22 +109,51 @@ public class PostProvider extends ContentProvider {
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(PostTable.TABLE_NAME);
 
+        Cursor cursor;
+
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:
-                //do nothing
+                cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+                if (cursor.getCount() == 0) {
+                    loadData();
+                }
                 break;
-            case SINGLE_POST:
-                String id = uri.getPathSegments().get(1);
-                queryBuilder.appendWhere(PostTable._ID + "=" + id);
+            case NEW_POSTS:
+                loadData();
+
+                cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+
                 break;
+//            case SINGLE_POST:
+//                String id = uri.getPathSegments().get(1);
+//                queryBuilder.appendWhere(PostTable._ID + "=" + id);
+//                break;
             default:
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
+                throw new IllegalArgumentException("Unsupported URI3: " + uri);
         }
 
-        Cursor cursor = queryBuilder.query(db, projection, selection,
-                selectionArgs, null, null, sortOrder);
         return cursor;
+    }
 
+    private int loadData() {
+        AndroidSaxFeedParser parser = new AndroidSaxFeedParser("http://habrahabr.ru/rss/hubs/");
+
+        List<Post> posts = parser.parse();
+
+        for (Post post : posts) {
+            try {
+                String src = RssReader.findSrcPreview(post.description);
+                if (src != null) {
+                    post.previewLink = new URL(src);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+
+            insert(URI_POSTS, PostMapper.toValues(post));
+        }
+
+        return posts.size();
     }
 
     // The delete() method deletes rows based on the seletion or if an id is
@@ -132,7 +175,7 @@ public class PostProvider extends ContentProvider {
                         " AND (" + selection + ')' : "");
                 break;
             default:
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
+                throw new IllegalArgumentException("Unsupported URI4: " + uri);
         }
         int deleteCount = db.delete(PostTable.TABLE_NAME, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
@@ -157,7 +200,7 @@ public class PostProvider extends ContentProvider {
                         " AND (" + selection + ')' : "");
                 break;
             default:
-                throw new IllegalArgumentException("Unsupported URI: " + uri);
+                throw new IllegalArgumentException("Unsupported URI5: " + uri);
         }
         int updateCount = db.update(PostTable.TABLE_NAME, values, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);

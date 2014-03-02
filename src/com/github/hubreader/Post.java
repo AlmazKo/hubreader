@@ -17,7 +17,7 @@ public class Post implements Comparable<Post> {
     public String title;
     public URL link;
     public URL shortLink;
-    public URL imageLink;
+    public URL previewLink;
     public String description;
     public Date date;
 
@@ -31,6 +31,14 @@ public class Post implements Comparable<Post> {
     public void setLink(String link) {
         try {
             this.link = new URL(link);
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void setPreviewLink(String previewLink) {
+        try {
+            this.previewLink = new URL(previewLink);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +79,7 @@ public class Post implements Comparable<Post> {
         post.description = description;
         post.link = link;
         post.shortLink = shortLink;
-        post.imageLink = imageLink;
+        post.previewLink = previewLink;
 
         return post;
     }

@@ -8,6 +8,7 @@ public class PostTable implements BaseColumns {
     public static final String TABLE_NAME = "posts";
 
     public static final String LINK = "link";
+    public static final String LINK_PREVIEW = "link_preview";
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String DATE_CREATE = "date_create";
@@ -17,6 +18,7 @@ public class PostTable implements BaseColumns {
             "CREATE TABLE if not exists " + TABLE_NAME + " (" +
                     _ID + " integer PRIMARY KEY autoincrement," +
                     LINK + "," +
+                    LINK_PREVIEW + "," +
                     DESCRIPTION + "," +
                     DATE_CREATE + "," +
                     TITLE + ");";

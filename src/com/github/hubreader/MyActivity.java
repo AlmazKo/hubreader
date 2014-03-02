@@ -6,9 +6,9 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ListView;
-import android.widget.ProgressBar;
+import android.widget.*;
 import com.github.hubreader.data.PostLoader;
+import com.github.hubreader.data.PostProvider;
 import com.github.hubreader.task.RssReader;
 
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ import java.util.List;
 
 public class MyActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
     RssReader task;
+    public static final int LOADER_MAIN = 0;
+    public static final int LOADER_NEW = 1;
 
     /**
      * Called when the activity is first created.
@@ -24,11 +26,12 @@ public class MyActivity extends Activity implements LoaderManager.LoaderCallback
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        getLoaderManager().initLoader(0, null, this);
+        touchEvents();
 
+        getLoaderManager().initLoader(LOADER_MAIN, null, this);
     }
 
-    public void showData(List<com.github.hubreader.Post> result) {
+    public void show(List<com.github.hubreader.Post> result) {
 
         PostsAdapter adapter = new PostsAdapter(result, this);
 
@@ -42,20 +45,44 @@ public class MyActivity extends Activity implements LoaderManager.LoaderCallback
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return new PostLoader(this);
+        switch (i) {
+            case LOADER_MAIN:
+                return new PostLoader(this, PostProvider.URI_POSTS);
+            case LOADER_NEW:
+                return new PostLoader(this, PostProvider.URI_NEW_POSTS);
+
+        }
+        return null;
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        ArrayList<Post> posts = new ArrayList<>();
+        List<Post> posts = new ArrayList<>();
+        cursor.moveToFirst();
         while (cursor.moveToNext()) {
             posts.add(PostMapper.toPost(cursor));
         }
-        showData(posts);
+        show(posts);
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
+    }
+
+    private void touchEvents() {
+
+        ImageView button = (ImageView) findViewById(R.id.btn_update);
+
+        button.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                showNew();
+            }
+        });
+    }
+
+    private void showNew() {
+        Toast.makeText(this, "Update ...", Toast.LENGTH_SHORT).show();
+        getLoaderManager().initLoader(LOADER_NEW, null, this);
     }
 }

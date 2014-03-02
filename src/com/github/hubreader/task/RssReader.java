@@ -37,14 +37,14 @@ public class RssReader extends AsyncTask<String, Integer, List<Post>> {
             try {
                 String src = findSrcPreview(post.description);
                 if (src != null) {
-                    post.imageLink = new URL(src);
+                    post.previewLink = new URL(src);
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
         }
         if (result != null) {
-//            activity.showData(result);
+//            activity.show(result);
         } else {
             Log.v("sss_err", "error task");
         }
@@ -63,7 +63,7 @@ public class RssReader extends AsyncTask<String, Integer, List<Post>> {
         }
     }
 
-    private static String findSrcPreview(final String string) {
+    public static String findSrcPreview(final String string) {
         int pos = string.indexOf(IMG_PATTERN);
         if (pos < 0) {
             return null;

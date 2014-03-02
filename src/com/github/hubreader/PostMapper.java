@@ -26,6 +26,7 @@ public class PostMapper {
         post.title = cursor.getString(cursor.getColumnIndex(TITLE));
         post.description = cursor.getString(cursor.getColumnIndex(DESCRIPTION));
         post.setLink(cursor.getString(cursor.getColumnIndex(LINK)));
+        post.setPreviewLink(cursor.getString(cursor.getColumnIndex(LINK_PREVIEW)));
 
         return post;
     }
