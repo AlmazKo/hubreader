@@ -37,7 +37,7 @@ public class PostProvider extends ContentProvider {
 
     // create content URIs from the authority by appending path to database table
     public static final Uri URI_POSTS = Uri.parse("content://" + AUTHORITY + "/posts");
-    public static final Uri URI_NEW_POSTS = Uri.parse("content://" + AUTHORITY + "/posts/new");
+    public static final Uri URI_NEW_POSTS = Uri.parse("content://" + AUTHORITY + "/posts/new/");
 
     // a content URI pattern matches content URIs using wildcard characters:
     // *: Matches a string of any valid characters of any length.
@@ -48,7 +48,7 @@ public class PostProvider extends ContentProvider {
         uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
         uriMatcher.addURI(AUTHORITY, "posts/#", SINGLE_POST);
         uriMatcher.addURI(AUTHORITY, "posts", ALL_POSTS);
-        uriMatcher.addURI(AUTHORITY, "posts/new", NEW_POSTS);
+        uriMatcher.addURI(AUTHORITY, "posts/new/", NEW_POSTS);
     }
 
     // system calls onCreate() when it starts up the provider.

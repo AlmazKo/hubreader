@@ -7,7 +7,7 @@ import com.github.hubreader.task.HtmlPageReader;
 /**
  * @author Almazko
  */
-public class NewsActivity extends Activity {
+public class PostActivity extends Activity {
 
     private Post news;
 

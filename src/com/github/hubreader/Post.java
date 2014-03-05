@@ -37,6 +37,9 @@ public class Post implements Comparable<Post> {
     }
 
     public void setPreviewLink(String previewLink) {
+        if (previewLink == null) {
+            return;
+        }
         try {
             this.previewLink = new URL(previewLink);
         } catch (MalformedURLException e) {

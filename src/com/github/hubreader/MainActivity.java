@@ -14,7 +14,7 @@ import com.github.hubreader.task.RssReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks<Cursor> {
     RssReader task;
     public static final int LOADER_MAIN = 0;
     public static final int LOADER_NEW = 1;

@@ -3,8 +3,8 @@ package com.github.hubreader.task;
 import android.os.AsyncTask;
 import android.util.Log;
 import com.github.hubreader.AndroidSaxFeedParser;
+import com.github.hubreader.MainActivity;
 import com.github.hubreader.Post;
-import com.github.hubreader.MyActivity;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,9 +16,9 @@ import java.util.List;
 public class RssReader extends AsyncTask<String, Integer, List<Post>> {
 
     private static final String IMG_PATTERN = "<img src=\"";
-    private MyActivity activity;
+    private MainActivity activity;
 
-    public RssReader(MyActivity activity) {
+    public RssReader(MainActivity activity) {
 
         this.activity = activity;
     }

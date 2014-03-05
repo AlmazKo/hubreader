@@ -88,7 +88,7 @@ public class PostsAdapter extends BaseAdapter {
         holder.parent.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(context, NewsActivity.class);
+                intent.setClass(context, PostActivity.class);
                 intent.putExtra(Post.ID, i);
                 context.startActivity(intent);
             }

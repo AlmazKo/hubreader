@@ -3,7 +3,7 @@ package com.github.hubreader.task;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.webkit.WebView;
-import com.github.hubreader.NewsActivity;
+import com.github.hubreader.PostActivity;
 import com.github.hubreader.R;
 
 import java.io.IOException;
@@ -14,10 +14,10 @@ import java.net.URL;
  */
 public class HtmlPageReader extends AsyncTask<String, Integer, String> {
 
-    private NewsActivity activity;
+    private PostActivity activity;
     private final URL link;
 
-    public HtmlPageReader(NewsActivity activity, URL link) {
+    public HtmlPageReader(PostActivity activity, URL link) {
 
         this.activity = activity;
         this.link = link;
