@@ -1,10 +1,11 @@
-package com.github.hubreader;
+package com.github.hubreader.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import com.github.hubreader.R;
 import com.github.hubreader.data.PostProvider;
 
 /**

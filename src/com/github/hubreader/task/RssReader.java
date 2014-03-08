@@ -3,7 +3,7 @@ package com.github.hubreader.task;
 import android.os.AsyncTask;
 import android.util.Log;
 import com.github.hubreader.AndroidSaxFeedParser;
-import com.github.hubreader.MainActivity;
+import com.github.hubreader.activity.MainActivity;
 import com.github.hubreader.Post;
 
 import java.net.MalformedURLException;

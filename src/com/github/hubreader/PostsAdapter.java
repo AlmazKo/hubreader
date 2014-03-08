@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.github.hubreader.activity.PostActivity;
 import com.github.hubreader.task.ImageLoader;
 
 import java.util.List;

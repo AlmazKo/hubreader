@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.hubreader.activity;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import com.github.hubreader.*;
 import com.github.hubreader.data.PostLoader;
 import com.github.hubreader.data.PostProvider;
 import com.github.hubreader.task.RssReader;

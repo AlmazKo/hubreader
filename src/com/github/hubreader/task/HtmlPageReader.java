@@ -3,7 +3,7 @@ package com.github.hubreader.task;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.webkit.WebView;
-import com.github.hubreader.PostActivity;
+import com.github.hubreader.activity.PostActivity;
 import com.github.hubreader.R;
 
 import java.io.IOException;

@@ -6,6 +6,6 @@ import java.util.List;
  * @author Almazko
  */
 public class NewsProvider {
-    static List<Post> news;
+    public static List<Post> news;
 
 }
