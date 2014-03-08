@@ -67,8 +67,8 @@ public class PostsAdapter extends BaseAdapter {
         NewsHolder holder;
 
         if (view == null) {
-            view = inflater.inflate(R.layout.news_item, null);
-            Log.v("PostsAdapter", "Created news_item");
+            view = inflater.inflate(R.layout.post_item, null);
+            Log.v("PostsAdapter", "Created post_item");
             holder = new NewsHolder();
             holder.title = (TextView) view.findViewById(R.id.title);
             holder.content = (TextView) view.findViewById(R.id.content);

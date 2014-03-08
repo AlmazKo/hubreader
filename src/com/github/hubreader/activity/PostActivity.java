@@ -16,7 +16,7 @@ public class PostActivity extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.news);
+        setContentView(R.layout.post);
 
         Bundle extras = getIntent().getExtras();
         int i = extras.getInt(Post.ID);
