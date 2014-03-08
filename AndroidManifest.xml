@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".activity.PostActivity"/>
         <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.DataActivity"/>
 
 
         <provider android:name="com.github.hubreader.data.PostProvider"  android:authorities="com.github.hubreader.data.contentprovider"/>

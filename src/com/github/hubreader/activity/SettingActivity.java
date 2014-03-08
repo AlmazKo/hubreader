@@ -24,6 +24,16 @@ public class SettingActivity extends Activity {
                 removeAllData();
             }
         });
+
+        findViewById(R.id.btn_show_all_data).setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                showAllData();
+            }
+        });
+    }
+
+    private void showAllData() {
+
     }
 
     private void removeAllData() {

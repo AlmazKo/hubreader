@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Просмотр данных"
-            android:id="@+id/button"
+            android:id="@+id/btn_show_all_data"
             android:layout_below="@+id/btn_remove_data" android:layout_alignParentLeft="true"/>
     <TextView
             android:layout_width="wrap_content"
