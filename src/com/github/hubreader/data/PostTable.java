@@ -21,7 +21,8 @@ public class PostTable implements BaseColumns {
                     LINK_PREVIEW + "," +
                     DESCRIPTION + "," +
                     DATE_CREATE + "," +
-                    TITLE + ");";
+                    TITLE + "," +
+                    "UNIQUE (" + LINK + ") ON CONFLICT REPLACE);";
 
     public static void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE);
