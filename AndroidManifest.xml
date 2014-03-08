@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PostActivity"/>
+        <activity android:name=".SettingActivity"/>
 
 
         <provider android:name="com.github.hubreader.data.PostProvider"  android:authorities="com.github.hubreader.data.contentprovider"/>

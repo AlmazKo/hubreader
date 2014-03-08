@@ -2,6 +2,7 @@ package com.github.hubreader;
 
 import android.app.Activity;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -72,13 +73,27 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 
     private void touchEvents() {
 
-        ImageView button = (ImageView) findViewById(R.id.btn_update);
+        ImageView buttonUpdate = (ImageView) findViewById(R.id.btn_update);
+        ImageView buttonSettings = (ImageView) findViewById(R.id.btn_setting);
 
-        button.setOnClickListener(new Button.OnClickListener() {
+        buttonUpdate.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+
                 showNew();
             }
         });
+
+        buttonSettings.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                showSettings();
+            }
+        });
+    }
+
+    private void showSettings() {
+        Intent intent = new Intent();
+        intent.setClass(this, SettingActivity.class);
+        this.startActivity(intent);
     }
 
     private void showNew() {

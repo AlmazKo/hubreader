@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="10dp" android:showDividers="middle" android:measureWithLargestChild="false"
+        android:longClickable="false" android:divider="#006a9b" android:dividerPadding="2dp"
+        android:orientation="vertical">
+    <Button
+            style="@style/setting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Удалить данные"
+            android:id="@+id/btn_remove_data"/>
+    <Button
+            style="@style/setting_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/button"/>
+</LinearLayout>

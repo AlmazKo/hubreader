@@ -164,21 +164,23 @@ public class PostProvider extends ContentProvider {
     public int delete(Uri uri, String selection, String[] selectionArgs) {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        int deleteCount = 0;
+
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:
-                //do nothing
+                deleteCount = db.delete(PostTable.TABLE_NAME, selection, selectionArgs);
                 break;
             case SINGLE_POST:
-                String id = uri.getPathSegments().get(1);
-                selection = PostTable._ID + "=" + id
-                        + (!TextUtils.isEmpty(selection) ?
-                        " AND (" + selection + ')' : "");
+//                String id = uri.getPathSegments().get(1);
+//                selection = PostTable._ID + "=" + id
+//                        + (!TextUtils.isEmpty(selection) ?
+//                        " AND (" + selection + ')' : "");
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI4: " + uri);
         }
-        int deleteCount = db.delete(PostTable.TABLE_NAME, selection, selectionArgs);
-        getContext().getContentResolver().notifyChange(uri, null);
+//        getContext().getContentResolver().notifyChange(uri, null);
         return deleteCount;
     }
 

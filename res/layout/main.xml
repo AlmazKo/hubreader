@@ -36,7 +36,7 @@
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton" android:layout_gravity="right" android:layout_alignParentLeft="false"
+                android:id="@+id/btn_setting" android:layout_gravity="right" android:layout_alignParentLeft="false"
                 android:layout_marginLeft="431dp" android:layout_alignParentTop="true" android:layout_marginTop="0dp"
                 android:layout_alignParentRight="true" android:layout_centerVertical="true"
                 android:adjustViewBounds="false"
@@ -46,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_update"
-                android:layout_toLeftOf="@+id/imageButton" android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/btn_setting" android:layout_centerVertical="true"
                 style="@style/menu_item" android:background="@android:drawable/stat_notify_sync"
                 android:clickable="true"/>
 
