@@ -59,7 +59,7 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
-        List<Post> posts = new ArrayList<>();
+        List<Post> posts = new ArrayList<Post>();
         cursor.moveToFirst();
         while (cursor.moveToNext()) {
             posts.add(PostMapper.toPost(cursor));
