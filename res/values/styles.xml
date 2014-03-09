@@ -35,4 +35,8 @@
         <item name="android:width">200dp</item>
     </style>
 
+    <style name="data_cell">
+        <item name="android:textSize">9sp</item>
+        <item name="android:padding">2dp</item>
+    </style>
 </resources>

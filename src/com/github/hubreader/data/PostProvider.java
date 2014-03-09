@@ -38,6 +38,7 @@ public class PostProvider extends ContentProvider {
     // create content URIs from the authority by appending path to database table
     public static final Uri URI_POSTS = Uri.parse("content://" + AUTHORITY + "/posts");
     public static final Uri URI_NEW_POSTS = Uri.parse("content://" + AUTHORITY + "/posts/new/");
+    public static final String PARAM_ACTUAL = "ACTUAL";
 
     // a content URI pattern matches content URIs using wildcard characters:
     // *: Matches a string of any valid characters of any length.
@@ -113,8 +114,8 @@ public class PostProvider extends ContentProvider {
 
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:
-                cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
-                if (cursor.getCount() == 0) {
+                cursor = queryBuilder.query(db, projection, null, selectionArgs, null, null, sortOrder);
+                if (selection == null && cursor.getCount() == 0) {
                     loadData();
                 }
                 break;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="15dp" android:baselineAligned="true"
+          android:divider="@color/data_divider" android:layoutMode="clipBounds"
+          android:showDividers="middle" android:weightSum="100">
+
+    <TextView
+            android:layout_weight="32"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/data_id" style="@style/data_cell" android:singleLine="true"/>
+    <TextView
+            android:layout_weight="31"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/data_link" style="@style/data_cell" android:singleLine="true"/>
+    <TextView
+            android:layout_weight="29"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/data_date" style="@style/data_cell" android:singleLine="true"/>
+    <TextView
+            android:layout_weight="9"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text=""
+            android:id="@+id/data_title" style="@style/data_cell" android:singleLine="true"/>
+</TableRow>

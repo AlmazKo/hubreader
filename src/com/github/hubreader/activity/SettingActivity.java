@@ -1,6 +1,7 @@
 package com.github.hubreader.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,13 +33,15 @@ public class SettingActivity extends Activity {
         });
     }
 
-    private void showAllData() {
-
-    }
-
     private void removeAllData() {
         getContentResolver().delete(PostProvider.URI_POSTS, null, null);
         Toast.makeText(this, "Deleted all data", Toast.LENGTH_SHORT).show();
 
+    }
+
+    private void showAllData() {
+        Intent intent = new Intent();
+        intent.setClass(this, DataActivity.class);
+        this.startActivity(intent);
     }
 }
