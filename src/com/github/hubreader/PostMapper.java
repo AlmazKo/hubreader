@@ -3,6 +3,10 @@ package com.github.hubreader;
 import android.content.ContentValues;
 import android.database.Cursor;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import static com.github.hubreader.data.PostTable.*;
 
 /**
@@ -17,6 +21,7 @@ public class PostMapper {
         values.put(LINK, post.link.toString());
         values.put(TITLE, post.title);
         values.put(DESCRIPTION, post.description);
+        values.put(DATE_CREATE, getDateTime(post.date));
 
         return values;
     }
@@ -29,5 +34,12 @@ public class PostMapper {
         post.setPreviewLink(cursor.getString(cursor.getColumnIndex(LINK_PREVIEW)));
 
         return post;
+    }
+
+    private static String getDateTime(Date date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+
+        return dateFormat.format(date);
     }
 }
