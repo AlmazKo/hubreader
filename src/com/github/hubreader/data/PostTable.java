@@ -7,22 +7,22 @@ public class PostTable implements BaseColumns {
 
     public static final String TABLE_NAME = "posts";
 
-    public static final String LINK = "link";
+    public static final String ID = "id";
     public static final String LINK_PREVIEW = "link_preview";
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
-    public static final String DATE_CREATE = "date_create";
+    public static final String DATE_PUBLISH = "date_publish";
 
 
     private static final String DATABASE_CREATE =
             "CREATE TABLE if not exists " + TABLE_NAME + " (" +
-                    _ID + " integer PRIMARY KEY autoincrement," +
-                    LINK + "," +
+                    _ID + " integer PRIMARY KEY," +
+                    ID + " integer, " +
                     LINK_PREVIEW + "," +
                     DESCRIPTION + "," +
-                    DATE_CREATE + "," +
-                    TITLE + "," +
-                    "UNIQUE (" + LINK + ") ON CONFLICT REPLACE);";
+                    DATE_PUBLISH + "," +
+                    TITLE +
+                    ");";
 
     public static void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE);

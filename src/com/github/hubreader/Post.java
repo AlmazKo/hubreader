@@ -2,69 +2,50 @@ package com.github.hubreader;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormatSymbols;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * @author Almazko
  */
 public class Post implements Comparable<Post> {
-    static SimpleDateFormat FORMATTER;
-    public static final String ID = "news_id";
+
+    public static final String HABR_FULL = "http://habrahabr.ru/post/";
+    public static final String HABR_MOBILE = "http://m.habrahabr.ru/post/";
+
+    public static final String ID = "id";
+
+    public int id;
+    public Date publishDate;
     public String title;
-    public URL link;
-    public URL shortLink;
-    public URL previewLink;
     public String description;
-    public Date date;
+    public URL previewLink;
 
 
-    static {
-        FORMATTER = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z");
-        FORMATTER.setDateFormatSymbols(DateFormatSymbols.getInstance(Locale.ENGLISH));
-    }
 
-    // getters and setters omitted for brevity
-    public void setLink(String link) {
+    public URL getLink() {
         try {
-            this.link = new URL(link);
+            return new URL(HABR_MOBILE + id + "/");
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void setPreviewLink(String previewLink) {
-        if (previewLink == null) {
-            return;
-        }
-        try {
-            this.previewLink = new URL(previewLink);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+    public URL getPreviewLink() {
+        return previewLink;
     }
 
-
-    public String getDate() {
-        return FORMATTER.format(this.date);
+    public Date getPublishDate() {
+        return publishDate;
     }
 
-    public void setDate(String date) {
-        try {
-            this.date = FORMATTER.parse(date.trim());
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 
-    // sort by date
+    // sort by publishDate
     public int compareTo(Post another) {
         if (another == null) return 1;
-        // sort descending, most recent first
-        return another.date.compareTo(date);
+        return Double.compare(another.id, id);
     }
 
     public void setTitle(String title) {
@@ -75,27 +56,24 @@ public class Post implements Comparable<Post> {
         return title;
     }
 
-    public Post copy() {
-        Post post = new Post();
-        post.date = (Date) date.clone();
-        post.title = title;
-        post.description = description;
-        post.link = link;
-        post.shortLink = shortLink;
-        post.previewLink = previewLink;
-
-        return post;
-    }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setShortLink(String shortLink) {
-        try {
-            this.shortLink = new URL(shortLink);
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Post copy() {
+        Post post = new Post();
+        post.id = id;
+        post.title = title;
+        post.publishDate = (Date) publishDate.clone();
+        post.description = description;
+
+        post.previewLink = previewLink;
+
+        return post;
     }
 }

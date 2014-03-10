@@ -7,19 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import com.github.hubreader.data.PostTable;
 
 import java.text.DateFormat;
-
-import static android.provider.BaseColumns._ID;
-import static com.github.hubreader.data.PostTable.LINK;
-import static com.github.hubreader.data.PostTable.TITLE;
 
 /**
  * @author Almazko
  */
 public class PostsCursorAdapter extends CursorAdapter {
-
 
     private final LayoutInflater inflater;
     private final DateFormat dateFormat;
@@ -34,7 +28,6 @@ public class PostsCursorAdapter extends CursorAdapter {
     public PostsCursorAdapter(Context context, Cursor c) {
         super(context, c, 0);
         inflater = LayoutInflater.from(context);
-
         dateFormat = android.text.format.DateFormat.getDateFormat(context);
     }
 
@@ -58,12 +51,17 @@ public class PostsCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         RowHolder holder = (RowHolder) view.getTag();
 
-        String link = cursor.getString(cursor.getColumnIndex(LINK));
-        String postId = link.substring(25, link.length() - 1);
-        holder.id.setText(cursor.getString(cursor.getColumnIndex(_ID)));
-        holder.link.setText(postId);
-        holder.title.setText(cursor.getString(cursor.getColumnIndex(TITLE)));
-       holder.date.setText(cursor.getString(cursor.getColumnIndex(PostTable.DATE_CREATE)));
+        Post post = PostMapper.toPost(cursor);
 
+        holder.id.setText(String.valueOf(post.id));
+
+        if (post.getPreviewLink() != null) {
+            holder.link.setText(post.getPreviewLink().toString());
+        }  else {
+            holder.link.setText("null");
+        }
+
+        holder.title.setText(post.title);
+        holder.date.setText(dateFormat.format(post.publishDate));
     }
 }

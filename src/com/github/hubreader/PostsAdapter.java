@@ -23,22 +23,14 @@ public class PostsAdapter extends BaseAdapter {
     private final List<Post> posts;
     private Context context;
     private LayoutInflater inflater;
-//    private static NewsHolder newsHolder;
 
-    static class NewsHolder {
+    static class PostHolder {
         TextView title;
         TextView content;
         ImageView preview;
         TextView previewLoader;
         View parent;
     }
-
-
-    class Read {
-        Read(Context context, Post post) {
-        }
-    }
-
 
     public PostsAdapter(List<Post> posts, Context context) {
 
@@ -64,12 +56,12 @@ public class PostsAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
-        NewsHolder holder;
+        PostHolder holder;
 
         if (view == null) {
             view = inflater.inflate(R.layout.post_item, null);
             Log.v("PostsAdapter", "Created post_item");
-            holder = new NewsHolder();
+            holder = new PostHolder();
             holder.title = (TextView) view.findViewById(R.id.title);
             holder.content = (TextView) view.findViewById(R.id.content);
             holder.preview = (ImageView) view.findViewById(R.id.preview);
@@ -77,7 +69,7 @@ public class PostsAdapter extends BaseAdapter {
             holder.parent = view.findViewById(R.id.post);
             view.setTag(holder);
         } else {
-            holder = (NewsHolder) view.getTag();
+            holder = (PostHolder) view.getTag();
         }
 
 
@@ -88,10 +80,7 @@ public class PostsAdapter extends BaseAdapter {
 
         holder.parent.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(context, PostActivity.class);
-                intent.putExtra(Post.ID, i);
-                context.startActivity(intent);
+                openPost(i);
             }
         });
 
@@ -106,5 +95,14 @@ public class PostsAdapter extends BaseAdapter {
         }
 
         return view;
+    }
+
+    void openPost(int i) {
+        Post post = posts.get(i);
+
+        Intent intent = new Intent();
+        intent.setClass(context, PostActivity.class);
+        intent.putExtra(Post.ID, post.ID);
+        context.startActivity(intent);
     }
 }

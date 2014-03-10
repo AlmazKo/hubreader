@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "habreader";
-    private static final int DATABASE_VERSION = 6;
+    private static final String DATABASE_NAME = "hubreader";
+    private static final int DATABASE_VERSION = 7;
 
     DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
