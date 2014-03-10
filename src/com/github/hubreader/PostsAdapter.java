@@ -86,8 +86,7 @@ public class PostsAdapter extends BaseAdapter {
 
 
         if (post.previewLink != null) {
-            holder.preview.setImageResource(R.drawable.ic_launcher);
-            ImageLoader task = new ImageLoader(holder.preview);
+            ImageLoader task = new ImageLoader(holder.preview, holder.previewLoader);
             task.execute(post.previewLink);
         }  else {
             holder.previewLoader.setVisibility(View.GONE);
