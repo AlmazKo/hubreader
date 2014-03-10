@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.github.hubreader.activity.PostActivity;
@@ -78,7 +77,7 @@ public class PostsAdapter extends BaseAdapter {
         holder.content.setText(Html.fromHtml(post.description));
 
 
-        holder.parent.setOnClickListener(new Button.OnClickListener() {
+        holder.parent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 openPost(i);
             }
@@ -101,7 +100,7 @@ public class PostsAdapter extends BaseAdapter {
 
         Intent intent = new Intent();
         intent.setClass(context, PostActivity.class);
-        intent.putExtra(Post.ID, post.ID);
+        intent.putExtra(Post.ID, post.id);
         context.startActivity(intent);
     }
 }

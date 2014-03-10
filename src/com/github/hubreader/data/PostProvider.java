@@ -106,7 +106,7 @@ public class PostProvider extends ContentProvider {
     public Cursor query(Uri uri, String[] projection, String selection,
                         String[] selectionArgs, String sortOrder) {
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
         SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
         queryBuilder.setTables(PostTable.TABLE_NAME);
 
@@ -125,10 +125,11 @@ public class PostProvider extends ContentProvider {
                 cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
                 break;
-//            case SINGLE_POST:
-//                String id = uri.getPathSegments().get(1);
-//                queryBuilder.appendWhere(PostTable._ID + "=" + id);
-//                break;
+            case SINGLE_POST:
+                String id = uri.getPathSegments().get(1);
+                queryBuilder.appendWhere(PostTable._ID + "=" + id);
+                cursor = queryBuilder.query(db, projection, null, selectionArgs, null, null, sortOrder);
+                break;
             default:
                 throw new IllegalArgumentException("Unsupported URI3: " + uri);
         }

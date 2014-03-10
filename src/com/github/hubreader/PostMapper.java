@@ -41,6 +41,10 @@ public class PostMapper {
     }
 
     public static Post toPost(Cursor cursor) {
+        if (cursor.getCount() < 1) {
+            return null;
+        }
+
         Post post = new Post();
         post.title = cursor.getString(cursor.getColumnIndex(TITLE));
         post.description = cursor.getString(cursor.getColumnIndex(DESCRIPTION));
