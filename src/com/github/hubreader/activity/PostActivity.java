@@ -29,14 +29,14 @@ public class PostActivity extends Activity {
 
 
         Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-
+        if (cursor.getCount() < 1) {
+            return;
+        }
 
         Post post = PostMapper.toPost(cursor);
-//
-        if (post != null) {
-            HtmlPageReader task = new HtmlPageReader(this, post.getLink());
-            task.execute();
-        }
+
+        HtmlPageReader task = new HtmlPageReader(this, post.getLink());
+        task.execute();
     }
 
     public void showPage(String result) {

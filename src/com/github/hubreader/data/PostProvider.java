@@ -128,7 +128,7 @@ public class PostProvider extends ContentProvider {
             case SINGLE_POST:
                 String id = uri.getPathSegments().get(1);
                 queryBuilder.appendWhere(PostTable._ID + "=" + id);
-                cursor = queryBuilder.query(db, projection, null, selectionArgs, null, null, sortOrder);
+                cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
                 break;
             default:
                 throw new IllegalArgumentException("Unsupported URI3: " + uri);
