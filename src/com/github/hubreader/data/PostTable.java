@@ -8,6 +8,7 @@ public class PostTable implements BaseColumns {
     public static final String TABLE_NAME = "posts";
 
     public static final String LINK_PREVIEW = "link_preview";
+    public static final String IMG_PREVIEW = "img_preview";
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String DATE_PUBLISH = "date_publish";
@@ -18,7 +19,8 @@ public class PostTable implements BaseColumns {
                     _ID + " integer PRIMARY KEY," +
                     LINK_PREVIEW + "," +
                     DESCRIPTION + "," +
-                    DATE_PUBLISH + "," +
+                    IMG_PREVIEW + "," +
+                    DATE_PUBLISH + " BLOB," +
                     TITLE +
                     ");";
 
