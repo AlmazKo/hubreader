@@ -25,6 +25,7 @@ public class ImageLoader extends AsyncTask<URL, Void, Bitmap> {
         try {
             InputStream in = url.openStream();
             image = BitmapFactory.decodeStream(in);
+            image = resize(image, 300, 300);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -37,5 +38,9 @@ public class ImageLoader extends AsyncTask<URL, Void, Bitmap> {
             loaderView.setVisibility(View.GONE);
             imageView.setImageBitmap(result);
         }
+    }
+
+    public static Bitmap resize(Bitmap bm, int newHeight, int newWidth) {
+        return Bitmap.createScaledBitmap(bm, newWidth, newHeight, false);
     }
 }
