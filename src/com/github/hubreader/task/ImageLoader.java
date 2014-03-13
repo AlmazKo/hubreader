@@ -5,27 +5,39 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
+import com.github.hubreader.Post;
+import com.github.hubreader.data.Updater;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.URL;
 
-public class ImageLoader extends AsyncTask<URL, Void, Bitmap> {
+public class ImageLoader extends AsyncTask<Post, Void, Bitmap> {
     private final View loaderView;
+    Updater updater;
     ImageView imageView;
+    Post post;
 
-    public ImageLoader(ImageView image, View loader) {
+    public ImageLoader(Updater updater, ImageView image, View loader) {
+        this.updater = updater;
         this.imageView = image;
         this.loaderView = loader;
     }
 
-    protected Bitmap doInBackground(URL... urls) {
-        URL url = urls[0];
+    protected Bitmap doInBackground(Post... posts) {
+        post = posts[0];
+        URL url = post.previewLink;
         Bitmap image = null;
+
 
         try {
             InputStream in = url.openStream();
             image = BitmapFactory.decodeStream(in);
             image = resize(image, 300, 300);
+
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            updater.image(post, bos.toByteArray());
         } catch (Exception e) {
             e.printStackTrace();
         }

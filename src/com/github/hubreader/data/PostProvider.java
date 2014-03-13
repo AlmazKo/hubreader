@@ -152,6 +152,7 @@ public class PostProvider extends ContentProvider {
                 e.printStackTrace();
             }
 
+            //TODO optimize
             insert(URI_POSTS, PostMapper.toValues(post));
         }
 
@@ -190,8 +191,7 @@ public class PostProvider extends ContentProvider {
     // based on the selection or a single row if the row id is provided. The
     // update method returns the number of updated rows.
     @Override
-    public int update(Uri uri, ContentValues values, String selection,
-                      String[] selectionArgs) {
+    public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         switch (uriMatcher.match(uri)) {
             case ALL_POSTS:

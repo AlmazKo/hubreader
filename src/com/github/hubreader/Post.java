@@ -1,5 +1,7 @@
 package com.github.hubreader;
 
+import android.graphics.Bitmap;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
@@ -19,7 +21,7 @@ public class Post implements Comparable<Post> {
     public String title;
     public String description;
     public URL previewLink;
-
+    public Bitmap preview;
 
 
     public URL getLink() {

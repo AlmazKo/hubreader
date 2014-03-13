@@ -2,6 +2,7 @@ package com.github.hubreader;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.graphics.BitmapFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -46,6 +47,11 @@ public class PostMapper {
         post.description = cursor.getString(cursor.getColumnIndex(DESCRIPTION));
         post.publishDate = getDateTime(cursor.getString(cursor.getColumnIndex(DATE_PUBLISH)));
         post.id = cursor.getInt(cursor.getColumnIndex(_ID));
+
+        byte[] blob = cursor.getBlob(cursor.getColumnIndex(IMG_PREVIEW));
+        if (blob != null) {
+            post.preview = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+        }
 
         String previewLink = cursor.getString(cursor.getColumnIndex(LINK_PREVIEW));
 
