@@ -39,4 +39,9 @@
         <item name="android:textSize">9sp</item>
         <item name="android:padding">2dp</item>
     </style>
+
+    <style name="menu_bar">
+        <item name="android:padding">2dip</item>
+        <item name="android:background">@android:drawable/bottom_bar</item>
+    </style>
 </resources>

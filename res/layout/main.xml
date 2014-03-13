@@ -7,14 +7,22 @@
     <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="50dp" style="@android:style/ButtonBar">
+            android:layout_height="50dp" style="@style/menu_bar">
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ico_main"
+                android:src="@drawable/rss_launcher"
+                />
+
              <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Лента"
                 android:id="@+id/menu_flow" android:layout_gravity="center_vertical" style="@style/menu_item"
-                android:layout_alignParentLeft="true" android:layout_marginLeft="8dp"
-                android:layout_alignParentTop="true" android:layout_marginTop="14dp"/>
+                android:layout_alignParentLeft="false" android:layout_marginLeft="8dp"
+                android:layout_alignParentTop="true" android:layout_marginTop="14dp"
+                android:layout_toRightOf="@+id/ico_main"/>
 
         <TextView
                 android:layout_width="wrap_content"

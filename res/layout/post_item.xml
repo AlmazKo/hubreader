@@ -30,7 +30,8 @@
             android:id="@+id/title" android:text="Заголовок" style="@style/post_title"
             android:layout_alignParentLeft="false" android:layout_alignParentTop="true"
             android:layout_alignTop="@+id/preview"
-            android:layout_toRightOf="@+id/preview" android:layout_alignParentRight="true"/>
+            android:layout_toRightOf="@+id/preview" android:layout_alignParentRight="true"
+            android:layout_marginLeft="2dp"/>
     <TextView
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
@@ -38,5 +39,6 @@
             android:text="Много букв контента.Много букв контента. Много букв контента. Много букв контента. Много букв контента.  "
             android:clickable="true" android:layout_alignParentLeft="false"
             android:layout_alignParentTop="false" android:layout_below="@id/title"
-            android:layout_toRightOf="@+id/preview" android:layout_alignParentBottom="true"/>
+            android:layout_toRightOf="@+id/preview" android:layout_alignParentBottom="true"
+            android:layout_marginLeft="2dp"/>
 </RelativeLayout>
