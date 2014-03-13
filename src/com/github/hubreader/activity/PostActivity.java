@@ -33,6 +33,7 @@ public class PostActivity extends Activity {
             return;
         }
 
+        cursor.moveToFirst();
         Post post = PostMapper.toPost(cursor);
 
         HtmlPageReader task = new HtmlPageReader(this, post.getLink());
