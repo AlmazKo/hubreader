@@ -1,6 +1,5 @@
 package com.github.hubreader;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Html;
@@ -12,8 +11,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.github.hubreader.activity.PostActivity;
-import com.github.hubreader.data.PostProvider;
-import com.github.hubreader.data.PostTable;
 import com.github.hubreader.data.Updater;
 import com.github.hubreader.task.ImageLoader;
 
@@ -96,6 +93,7 @@ public class PostsAdapter extends BaseAdapter {
                 task.execute(post);
             } else {
                 holder.preview.setImageBitmap(post.preview);
+                holder.previewLoader.setVisibility(View.GONE);
             }
 
         } else {
