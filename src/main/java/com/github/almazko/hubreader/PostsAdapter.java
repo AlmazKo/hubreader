@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.almazko.hubreader;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.github.hubreader.activity.PostActivity;
-import com.github.hubreader.data.Updater;
-import com.github.hubreader.task.ImageLoader;
+import com.github.almazko.hubreader.activity.PostActivity;
+import com.github.almazko.hubreader.data.Updater;
+import com.github.almazko.hubreader.task.ImageLoader;
 
 import java.text.DateFormat;
 import java.util.List;

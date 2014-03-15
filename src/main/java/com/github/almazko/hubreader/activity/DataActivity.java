@@ -1,12 +1,12 @@
-package com.github.hubreader.activity;
+package com.github.almazko.hubreader.activity;
 
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ListView;
-import com.github.hubreader.PostsCursorAdapter;
-import com.github.hubreader.R;
-import com.github.hubreader.data.PostProvider;
+import com.github.almazko.hubreader.PostsCursorAdapter;
+import com.github.almazko.hubreader.R;
+import com.github.almazko.hubreader.data.PostProvider;
 
 /**
  * @author Almazko

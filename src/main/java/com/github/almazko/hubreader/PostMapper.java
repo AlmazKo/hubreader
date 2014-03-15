@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.almazko.hubreader;
 
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import static com.github.hubreader.data.PostTable.*;
+import static com.github.almazko.hubreader.data.PostTable.*;
 
 /**
  * @author Almazko

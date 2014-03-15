@@ -1,4 +1,4 @@
-package com.github.hubreader.activity;
+package com.github.almazko.hubreader.activity;
 
 import android.app.Activity;
 import android.app.LoaderManager;
@@ -8,10 +8,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
-import com.github.hubreader.*;
-import com.github.hubreader.data.PostLoader;
-import com.github.hubreader.data.PostProvider;
-import com.github.hubreader.task.RssReader;
+import com.github.almazko.hubreader.*;
+import com.github.almazko.hubreader.data.PostLoader;
+import com.github.almazko.hubreader.data.PostProvider;
+import com.github.almazko.hubreader.task.RssReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
         getLoaderManager().initLoader(LOADER_MAIN, null, this);
     }
 
-    public void show(List<com.github.hubreader.Post> result) {
+    public void show(List<Post> result) {
 
         PostsAdapter adapter = new PostsAdapter(result, this);
 

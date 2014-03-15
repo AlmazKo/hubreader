@@ -1,8 +1,8 @@
-package com.github.hubreader.data;
+package com.github.almazko.hubreader.data;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import com.github.hubreader.Post;
+import com.github.almazko.hubreader.Post;
 
 /**
  * @author Almazko
@@ -11,7 +11,7 @@ public class Updater {
 
     private ContentResolver contentResolver;
 
-    public Updater(android.content.ContentResolver contentResolver) {
+    public Updater(ContentResolver contentResolver) {
 
         this.contentResolver = contentResolver;
     }

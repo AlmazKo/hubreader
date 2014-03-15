@@ -1,4 +1,4 @@
-package com.github.hubreader.data;
+package com.github.almazko.hubreader.data;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;

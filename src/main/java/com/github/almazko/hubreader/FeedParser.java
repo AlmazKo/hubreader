@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.almazko.hubreader;
 
 import java.util.List;
 

@@ -1,14 +1,14 @@
-package com.github.hubreader.activity;
+package com.github.almazko.hubreader.activity;
 
 import android.app.Activity;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import com.github.hubreader.Post;
-import com.github.hubreader.PostMapper;
-import com.github.hubreader.R;
-import com.github.hubreader.data.PostProvider;
-import com.github.hubreader.task.HtmlPageReader;
+import com.github.almazko.hubreader.Post;
+import com.github.almazko.hubreader.PostMapper;
+import com.github.almazko.hubreader.R;
+import com.github.almazko.hubreader.data.PostProvider;
+import com.github.almazko.hubreader.task.HtmlPageReader;
 
 /**
  * @author Almazko

@@ -1,4 +1,4 @@
-package com.github.hubreader.data;
+package com.github.almazko.hubreader.data;
 
 /**
  * @author Almazko
@@ -12,10 +12,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.text.TextUtils;
-import com.github.hubreader.AndroidSaxFeedParser;
-import com.github.hubreader.Post;
-import com.github.hubreader.PostMapper;
-import com.github.hubreader.task.RssReader;
+import com.github.almazko.hubreader.AndroidSaxFeedParser;
+import com.github.almazko.hubreader.Post;
+import com.github.almazko.hubreader.PostMapper;
+import com.github.almazko.hubreader.task.RssReader;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -33,7 +33,7 @@ public class PostProvider extends ContentProvider {
     // authority is the symbolic name of your provider
     // To avoid conflicts with other providers, you should use
     // Internet domain ownership (in reverse) as the basis of your provider authority.
-    private static final String AUTHORITY = "com.github.hubreader.data.contentprovider";
+    private static final String AUTHORITY = "com.github.almazko.hubreader.data.contentprovider";
 
     // create content URIs from the authority by appending path to database table
     public static final Uri URI_POSTS = Uri.parse("content://" + AUTHORITY + "/posts");

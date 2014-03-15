@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.almazko.hubreader;
 
 import android.content.Context;
 import android.database.Cursor;

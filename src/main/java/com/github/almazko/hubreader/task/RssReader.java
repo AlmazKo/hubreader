@@ -1,10 +1,10 @@
-package com.github.hubreader.task;
+package com.github.almazko.hubreader.task;
 
 import android.os.AsyncTask;
 import android.util.Log;
-import com.github.hubreader.AndroidSaxFeedParser;
-import com.github.hubreader.activity.MainActivity;
-import com.github.hubreader.Post;
+import com.github.almazko.hubreader.AndroidSaxFeedParser;
+import com.github.almazko.hubreader.activity.MainActivity;
+import com.github.almazko.hubreader.Post;
 
 import java.net.MalformedURLException;
 import java.net.URL;

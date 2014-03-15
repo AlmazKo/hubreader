@@ -1,4 +1,4 @@
-package com.github.hubreader.data;
+package com.github.almazko.hubreader.data;
 
 import android.content.Context;
 import android.content.CursorLoader;

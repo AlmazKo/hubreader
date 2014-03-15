@@ -1,4 +1,4 @@
-package com.github.hubreader.activity;
+package com.github.almazko.hubreader.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import com.github.hubreader.R;
-import com.github.hubreader.data.PostProvider;
+import com.github.almazko.hubreader.R;
+import com.github.almazko.hubreader.data.PostProvider;
 
 /**
  * @author Almazko

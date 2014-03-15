@@ -1,12 +1,12 @@
-package com.github.hubreader.task;
+package com.github.almazko.hubreader.task;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
-import com.github.hubreader.Post;
-import com.github.hubreader.data.Updater;
+import com.github.almazko.hubreader.Post;
+import com.github.almazko.hubreader.data.Updater;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.github.hubreader;
+package com.github.almazko.hubreader;
 
 import java.io.IOException;
 import java.io.InputStream;
