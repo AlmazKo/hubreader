@@ -9,7 +9,7 @@ import android.net.Uri;
  */
 public class PostLoader extends CursorLoader {
     public PostLoader(Context context, Uri contentUri) {
-        super(context);
+        super(context, contentUri, null, null, null, PostTable._ID + " DESC");
         setUri(contentUri);
 //        RssReader task = new RssReader(null);
 //        task.execute();
