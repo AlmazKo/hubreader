@@ -13,6 +13,11 @@
         <item name="android:layout_margin">0dp</item>
     </style>
 
+    <style name="post_bottom">
+        <item name="android:padding">8dp</item>
+    </style>
+
+
     <style name="menu_item">
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_margin">5dp</item>
@@ -27,6 +32,10 @@
     <style name="preview_title">
         <item name="android:textColor">#aaa</item>
         <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="post_date">
+        <item name="android:textColor">#ff868686</item>
     </style>
 
     <style name="setting_item">

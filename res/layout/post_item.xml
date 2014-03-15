@@ -1,44 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="150dp" android:background="@android:drawable/picture_frame"
+              android:layout_height="200dp" android:background="@android:drawable/picture_frame"
               style="@style/post_block" android:clickable="true" android:focusable="true" android:id="@+id/post">
 
-    <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:id="@+id/preview" android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" android:longClickable="true" android:textAlignment="center"/>
+    <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+        <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/preview" android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true" android:longClickable="true" android:textAlignment="center"/>
 
 
-    <TextView
-            android:id="@+id/previewLoader"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/preview"
-            android:layout_alignTop="@+id/preview"
-            android:layout_alignRight="@+id/preview"
-            android:layout_alignBottom="@+id/preview"
-            android:gravity="center"
-            android:text="Loading ..."
-            style="@style/preview_title"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/title" android:text="Заголовок" style="@style/post_title"
-            android:layout_alignParentLeft="false" android:layout_alignParentTop="true"
-            android:layout_alignTop="@+id/preview"
-            android:layout_toRightOf="@+id/preview" android:layout_alignParentRight="true"
-            android:layout_marginLeft="2dp"/>
-    <TextView
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/content" android:layout_gravity="center_horizontal"
-            android:text="Много букв контента.Много букв контента. Много букв контента. Много букв контента. Много букв контента.  "
-            android:clickable="true" android:layout_alignParentLeft="false"
-            android:layout_alignParentTop="false" android:layout_below="@id/title"
-            android:layout_toRightOf="@+id/preview" android:layout_alignParentBottom="true"
-            android:layout_marginLeft="2dp"/>
-</RelativeLayout>
+        <TextView
+                android:id="@+id/previewLoader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/preview"
+                android:layout_alignTop="@+id/preview"
+                android:layout_alignRight="@+id/preview"
+                android:layout_alignBottom="@+id/preview"
+                android:gravity="center"
+                android:text="Loading ..."
+                style="@style/preview_title" android:layout_marginRight="2dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title" android:text="Заголовок" style="@style/post_title"
+                android:layout_alignParentLeft="false" android:layout_alignParentTop="true"
+                android:layout_alignTop="@+id/preview"
+                android:layout_toRightOf="@+id/preview" android:layout_alignParentRight="true"
+                android:layout_marginLeft="2dp"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/content" android:layout_gravity="center_horizontal"
+                android:text="Много букв контента.Много букв контента. Много букв контента. Много букв контента. Много букв контента.  "
+                android:clickable="true" android:layout_alignParentLeft="false"
+                android:layout_alignParentTop="false" android:layout_below="@id/title"
+                android:layout_toRightOf="@+id/preview" android:layout_alignParentBottom="true"
+                android:layout_marginLeft="2dp"/>
+
+    </RelativeLayout>
+    <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" style="@style/post_bottom">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="20:34"
+                android:id="@+id/post_date" style="@style/post_date"/>
+    </FrameLayout>
+
+</LinearLayout>

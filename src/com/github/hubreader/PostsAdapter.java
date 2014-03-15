@@ -14,6 +14,7 @@ import com.github.hubreader.activity.PostActivity;
 import com.github.hubreader.data.Updater;
 import com.github.hubreader.task.ImageLoader;
 
+import java.text.DateFormat;
 import java.util.List;
 
 /**
@@ -24,12 +25,15 @@ public class PostsAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     private Updater updater;
+    private final DateFormat dateFormat;
+    private final DateFormat timeFormat;
 
     static class PostHolder {
         TextView title;
         TextView content;
         ImageView preview;
         TextView previewLoader;
+        TextView date;
         View parent;
     }
 
@@ -39,6 +43,9 @@ public class PostsAdapter extends BaseAdapter {
         this.context = context;
         inflater = LayoutInflater.from(context);
         updater = new Updater(context.getContentResolver());
+
+        dateFormat = android.text.format.DateFormat.getDateFormat(context);
+        timeFormat = android.text.format.DateFormat.getTimeFormat(context);
     }
 
     @Override
@@ -68,6 +75,7 @@ public class PostsAdapter extends BaseAdapter {
             holder.content = (TextView) view.findViewById(R.id.content);
             holder.preview = (ImageView) view.findViewById(R.id.preview);
             holder.previewLoader = (TextView) view.findViewById(R.id.previewLoader);
+            holder.date = (TextView) view.findViewById(R.id.post_date);
             holder.parent = view.findViewById(R.id.post);
             view.setTag(holder);
         } else {
@@ -78,7 +86,7 @@ public class PostsAdapter extends BaseAdapter {
         Post post = posts.get(i);
         holder.title.setText(post.title);
         holder.content.setText(Html.fromHtml(post.description));
-
+        holder.date.setText(timeFormat.format(post.publishDate) + " " + dateFormat.format(post.publishDate));
 
         holder.parent.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
