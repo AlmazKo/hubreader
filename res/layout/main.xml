@@ -61,7 +61,7 @@
     </RelativeLayout>
     <ProgressBar
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/loader" android:layout_gravity="center_horizontal"/>
     <ListView
             android:layout_width="match_parent"
