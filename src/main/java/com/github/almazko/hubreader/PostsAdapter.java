@@ -97,10 +97,14 @@ public class PostsAdapter extends BaseAdapter {
 
         if (post.previewLink != null) {
             if (post.preview == null) {
+                holder.previewLoader.setVisibility(View.VISIBLE);
+                holder.preview.setVisibility(View.INVISIBLE);
                 ImageLoader task = new ImageLoader(updater, holder.preview, holder.previewLoader);
                 task.execute(post);
             } else {
+                holder.preview.setVisibility(View.INVISIBLE);
                 holder.preview.setImageBitmap(post.preview);
+                holder.preview.setVisibility(View.VISIBLE);
                 holder.previewLoader.setVisibility(View.GONE);
             }
 

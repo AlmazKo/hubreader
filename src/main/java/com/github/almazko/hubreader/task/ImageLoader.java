@@ -49,6 +49,7 @@ public class ImageLoader extends AsyncTask<Post, Void, Bitmap> {
         if (imageView != null) {
             loaderView.setVisibility(View.GONE);
             imageView.setImageBitmap(result);
+            imageView.setVisibility(View.VISIBLE);
         }
     }
 

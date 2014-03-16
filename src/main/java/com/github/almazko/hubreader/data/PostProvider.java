@@ -8,6 +8,7 @@ import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
@@ -91,7 +92,7 @@ public class PostProvider extends ContentProvider {
 //            default:
 //                throw new IllegalArgumentException("Unsupported URI2: " + uri);
 //        }
-        long id = db.insert(PostTable.TABLE_NAME, null, values);
+        long id = db.insertOrThrow(PostTable.TABLE_NAME, null, values);
 //        getContext().getContentResolver().notifyChange(uri, null);
         return Uri.parse(URI_POSTS + "/" + id);
     }
@@ -152,8 +153,14 @@ public class PostProvider extends ContentProvider {
                 e.printStackTrace();
             }
 
+            ContentValues values = PostMapper.toValues(post);
             //TODO optimize
-            insert(URI_POSTS, PostMapper.toValues(post));
+            try {
+                insert(URI_POSTS, values);
+            } catch (SQLiteConstraintException e) {
+                String[] p = {String.valueOf(post.id)};
+                update(URI_POSTS, values, PostTable._ID + "= ?", p);
+            }
         }
 
         return posts.size();

@@ -29,7 +29,7 @@ public class HtmlParserTest {
     @Test
     public void findSrcPreview1() throws Exception {
         String src = HtmlParser.findSrcPreview(readFile("/parser/html_1.txt"));
-        assertEquals("http://habrastorage.org/getpro/habr/post_images/20a/7ed/034/20a7ed0347d07de7da7624d393cc95c8.jpg", src);
+        assertEquals("http://habrastorage.org/getpro/habr/post_images/08e/db8/332/08edb83321c3331cae694af718f9ebbc.jpg", src);
     }
 
     protected String readFile(String name) throws IOException {
