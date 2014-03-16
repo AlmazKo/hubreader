@@ -6,8 +6,10 @@ package com.github.almazko.hubreader.data;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
@@ -216,6 +218,14 @@ public class PostProvider extends ContentProvider {
         int updateCount = db.update(PostTable.TABLE_NAME, values, selection, selectionArgs);
         getContext().getContentResolver().notifyChange(uri, null);
         return updateCount;
+    }
+
+    public long countPosts(Context context) {
+        DatabaseHelper dbHelper = new DatabaseHelper(context);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long cnt = DatabaseUtils.queryNumEntries(db, PostTable.TABLE_NAME);
+
+        return cnt;
     }
 
 }
