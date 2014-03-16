@@ -5,6 +5,7 @@ import android.util.Log;
 import com.github.almazko.hubreader.AndroidSaxFeedParser;
 import com.github.almazko.hubreader.activity.MainActivity;
 import com.github.almazko.hubreader.Post;
+import com.github.almazko.hubreader.parser.HtmlParser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -35,7 +36,7 @@ public class RssReader extends AsyncTask<String, Integer, List<Post>> {
 
         for (Post post : result) {
             try {
-                String src = findSrcPreview(post.description);
+                String src = HtmlParser.findSrcPreview(post.description);
                 if (src != null) {
                     post.previewLink = new URL(src);
                 }
@@ -63,14 +64,4 @@ public class RssReader extends AsyncTask<String, Integer, List<Post>> {
         }
     }
 
-    public static String findSrcPreview(final String string) {
-        int pos = string.indexOf(IMG_PATTERN);
-        if (pos < 0) {
-            return null;
-        }
-        int startPosSrc = pos + IMG_PATTERN.length();
-        int endPosSrs = string.indexOf("\"", pos + IMG_PATTERN.length());
-
-        return string.substring(startPosSrc, endPosSrs);
-    }
 }

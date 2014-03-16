@@ -15,7 +15,7 @@ import android.text.TextUtils;
 import com.github.almazko.hubreader.AndroidSaxFeedParser;
 import com.github.almazko.hubreader.Post;
 import com.github.almazko.hubreader.PostMapper;
-import com.github.almazko.hubreader.task.RssReader;
+import com.github.almazko.hubreader.parser.HtmlParser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -144,7 +144,7 @@ public class PostProvider extends ContentProvider {
 
         for (Post post : posts) {
             try {
-                String src = RssReader.findSrcPreview(post.description);
+                String src = HtmlParser.findSrcPreview(post.description);
                 if (src != null) {
                     post.previewLink = new URL(src);
                 }
