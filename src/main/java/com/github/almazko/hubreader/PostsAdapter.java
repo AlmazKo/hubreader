@@ -2,6 +2,7 @@ package com.github.almazko.hubreader;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class PostsAdapter extends BaseAdapter {
     private Updater updater;
     private final DateFormat dateFormat;
     private final DateFormat timeFormat;
+    private final Typeface titleFont;
+    private final Typeface contentFont;
 
     static class PostHolder {
         TextView title;
@@ -46,6 +49,9 @@ public class PostsAdapter extends BaseAdapter {
 
         dateFormat = android.text.format.DateFormat.getDateFormat(context);
         timeFormat = android.text.format.DateFormat.getTimeFormat(context);
+
+        titleFont = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Medium.ttf");
+        contentFont = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Light.ttf");
     }
 
     @Override
@@ -78,6 +84,10 @@ public class PostsAdapter extends BaseAdapter {
             holder.date = (TextView) view.findViewById(R.id.post_date);
             holder.parent = view.findViewById(R.id.post);
             view.setTag(holder);
+
+            holder.title.setTypeface(titleFont);
+            holder.content.setTypeface(contentFont);
+            holder.date.setTypeface(contentFont);
         } else {
             holder = (PostHolder) view.getTag();
         }
