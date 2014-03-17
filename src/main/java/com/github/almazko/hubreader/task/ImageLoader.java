@@ -1,7 +1,6 @@
 package com.github.almazko.hubreader.task;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.*;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ImageView;
@@ -33,10 +32,11 @@ public class ImageLoader extends AsyncTask<Post, Void, Bitmap> {
         try {
             InputStream in = url.openStream();
             image = BitmapFactory.decodeStream(in);
-            image = resize(image, 300, 300);
+            image = resize(image, 200, 200);
+            image = getRoundedCornerBitmap(image, 2);
 
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
-            image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            image.compress(Bitmap.CompressFormat.PNG, 95, bos);
             updater.image(post, bos.toByteArray());
         } catch (Exception e) {
             e.printStackTrace();
@@ -55,5 +55,27 @@ public class ImageLoader extends AsyncTask<Post, Void, Bitmap> {
 
     public static Bitmap resize(Bitmap bm, int newHeight, int newWidth) {
         return Bitmap.createScaledBitmap(bm, newWidth, newHeight, false);
+    }
+
+
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = pixels;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
     }
 }
