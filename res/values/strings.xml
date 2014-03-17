@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Habreader</string>
+
+    <string-array name="main_types">
+        <item>Лента</item>
+        <item>Топ</item>
+        <item>Избранное</item>
+        <item>События</item>
+    </string-array>
 </resources>

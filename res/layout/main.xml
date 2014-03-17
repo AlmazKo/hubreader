@@ -3,7 +3,7 @@
               android:orientation="vertical"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:background="#ffd2d2d2">
+              android:background="#ffd2d2d2" android:baselineAligned="true">
     <RelativeLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -15,32 +15,14 @@
                 android:src="@drawable/rss_launcher"
                 />
 
-             <TextView
-                android:layout_width="wrap_content"
+        <Spinner
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:text="Лента"
-                android:id="@+id/menu_flow" android:layout_gravity="center_vertical" style="@style/menu_item"
-                android:layout_alignParentLeft="false" android:layout_marginLeft="8dp"
-                android:layout_alignParentTop="true" android:layout_marginTop="14dp"
-                android:layout_toRightOf="@+id/ico_main"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Посты"
-                android:id="@+id/menu_top" android:layout_gravity="center_vertical" style="@style/menu_item"
-                android:layout_alignParentLeft="false" android:layout_marginLeft="132dp"
-                android:layout_alignParentTop="true" android:layout_marginTop="14dp"
-                android:layout_toRightOf="@+id/menu_flow"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="События"
-                android:id="@+id/events" android:layout_gravity="center_vertical" style="@style/menu_item"
-                android:layout_alignParentLeft="false" android:layout_marginLeft="265dp"
-                android:layout_alignParentTop="true" android:layout_marginTop="14dp"
-                android:layout_toRightOf="@+id/menu_top"/>
+                android:id="@+id/spinner_main"
+                android:layout_toRightOf="@+id/ico_main" android:spinnerMode="dropdown"
+                android:dropDownListViewStyle="@+id/ico_main"
+                android:dropDownSpinnerStyle="@android:layout/select_dialog_item"
+                style="@style/menu_item"/>
         <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

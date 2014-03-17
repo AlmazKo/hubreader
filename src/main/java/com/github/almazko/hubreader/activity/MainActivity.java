@@ -31,6 +31,13 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
         touchEvents();
 
         getLoaderManager().initLoader(LOADER_MAIN, null, this);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.main_types, android.R.layout.simple_spinner_item);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner_main);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
     }
 
     public void show(List<Post> result) {
