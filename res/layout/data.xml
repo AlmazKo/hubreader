@@ -4,6 +4,40 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
         android:showDividers="end" android:divider="@color/data_divider">
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="25dp" android:baselineAligned="true"
+              android:divider="@color/data_divider" android:layoutMode="clipBounds"
+              android:showDividers="middle" android:background="#cacaca">
+
+        <TextView
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="ID"
+                style="@style/data_head"/>
+        <TextView
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:text="img\nsave"
+                style="@style/data_head"/>
+        <TextView
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:text="img\ndownload"
+                style="@style/data_head"/>
+        <TextView
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="date"
+                style="@style/data_head" android:singleLine="true"/>
+        <TextView
+                android:layout_weight="9"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="title"
+                style="@style/data_head" android:singleLine="true"/>
+    </TableRow>
     <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

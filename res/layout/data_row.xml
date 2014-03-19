@@ -4,30 +4,32 @@
           android:layout_width="match_parent"
           android:layout_height="15dp" android:baselineAligned="true"
           android:divider="@color/data_divider" android:layoutMode="clipBounds"
-          android:showDividers="middle" android:weightSum="100">
+          android:showDividers="middle">
 
     <TextView
-            android:layout_weight="32"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text=""
-            android:id="@+id/data_id" style="@style/data_cell" android:singleLine="true"/>
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:text="123456"
+            android:id="@+id/data_id" style="@style/data_cell"/>
     <TextView
-            android:layout_weight="31"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text=""
-            android:id="@+id/data_link" style="@style/data_cell" android:singleLine="true"/>
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:text="x"
+            android:id="@+id/data_link" style="@style/data_cell" android:gravity="center_horizontal"/>
     <TextView
-            android:layout_weight="29"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text=""
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:text="x"
+            android:id="@+id/data_preview" style="@style/data_cell" android:gravity="center_horizontal"/>
+    <TextView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="18.10.2005"
             android:id="@+id/data_date" style="@style/data_cell" android:singleLine="true"/>
     <TextView
             android:layout_weight="9"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:text=""
+            android:layout_height="wrap_content"
+            android:text="http://lalalalalalalallala"
             android:id="@+id/data_title" style="@style/data_cell" android:singleLine="true"/>
 </TableRow>

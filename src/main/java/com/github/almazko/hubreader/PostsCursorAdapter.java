@@ -23,6 +23,7 @@ public class PostsCursorAdapter extends CursorAdapter {
         TextView link;
         TextView title;
         TextView date;
+        TextView preview;
     }
 
     public PostsCursorAdapter(Context context, Cursor c) {
@@ -39,6 +40,7 @@ public class PostsCursorAdapter extends CursorAdapter {
         RowHolder holder = new RowHolder();
         holder.id = (TextView) view.findViewById(R.id.data_id);
         holder.link = (TextView) view.findViewById(R.id.data_link);
+        holder.preview = (TextView) view.findViewById(R.id.data_preview);
         holder.date = (TextView) view.findViewById(R.id.data_date);
         holder.title = (TextView) view.findViewById(R.id.data_title);
 
@@ -56,9 +58,15 @@ public class PostsCursorAdapter extends CursorAdapter {
         holder.id.setText(String.valueOf(post.id));
 
         if (post.getPreviewLink() != null) {
-            holder.link.setText(post.getPreviewLink().toString());
+            holder.link.setText("x");
         }  else {
-            holder.link.setText("null");
+            holder.link.setText(" ");
+        }
+
+        if (post.preview != null) {
+            holder.preview.setText("x");
+        }  else {
+            holder.preview.setText(" ");
         }
 
         holder.title.setText(post.title);

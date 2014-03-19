@@ -7,6 +7,7 @@ import android.widget.ListView;
 import com.github.almazko.hubreader.PostsCursorAdapter;
 import com.github.almazko.hubreader.R;
 import com.github.almazko.hubreader.data.PostProvider;
+import com.github.almazko.hubreader.data.PostTable;
 
 /**
  * @author Almazko
@@ -21,7 +22,7 @@ public class DataActivity extends Activity {
                 null,
                 PostProvider.PARAM_ACTUAL,
                 null,
-                null);
+                PostTable._ID + " DESC");
         PostsCursorAdapter adapter = new PostsCursorAdapter(this, cursor);
 
         ListView listView = (ListView) findViewById(R.id.data);
