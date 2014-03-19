@@ -19,7 +19,9 @@ import com.github.almazko.hubreader.AndroidSaxFeedParser;
 import com.github.almazko.hubreader.Post;
 import com.github.almazko.hubreader.PostMapper;
 import com.github.almazko.hubreader.parser.HtmlParser;
+import org.xml.sax.SAXException;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -119,11 +121,20 @@ public class PostProvider extends ContentProvider {
             case ALL_POSTS:
                 cursor = queryBuilder.query(db, projection, null, selectionArgs, null, null, sortOrder);
                 if (selection == null && cursor.getCount() == 0) {
-                    loadData();
+                    try {
+                        loadData();
+                    } catch (Exception e) {
+                        return null;
+                    }
                 }
                 break;
             case NEW_POSTS:
-                loadData();
+                try {
+                    loadData();
+                } catch (Exception e) {
+                    return null;
+                }
+
 
                 cursor = queryBuilder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
@@ -140,7 +151,7 @@ public class PostProvider extends ContentProvider {
         return cursor;
     }
 
-    private int loadData() {
+    private int loadData() throws IOException, SAXException {
         AndroidSaxFeedParser parser = new AndroidSaxFeedParser("http://habrahabr.ru/rss/hubs/");
 
         List<Post> posts = parser.parse();

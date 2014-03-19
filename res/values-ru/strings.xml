@@ -2,4 +2,6 @@
 
     <string name="app_name">Хабридер</string>
 
+
+    <string name="error_load_data">Произошла ошибка при загрузке данных\nПроверьте ваше соединение</string>
 </resources>

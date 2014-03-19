@@ -66,6 +66,12 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
+
+        if (cursor == null) {
+            Toast.makeText(this, R.string.error_load_data, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         List<Post> posts = new ArrayList<Post>();
         cursor.moveToFirst();
         while (cursor.moveToNext()) {

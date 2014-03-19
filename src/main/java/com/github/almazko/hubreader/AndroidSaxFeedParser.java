@@ -5,7 +5,9 @@ import android.sax.EndElementListener;
 import android.sax.EndTextElementListener;
 import android.sax.RootElement;
 import android.util.Xml;
+import org.xml.sax.SAXException;
 
+import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +32,7 @@ public class AndroidSaxFeedParser extends BaseFeedParser {
         super(feedUrl);
     }
 
-    public List<Post> parse() {
+    public List<Post> parse() throws IOException, SAXException {
         final Post currentPost = new Post();
         RootElement root = new RootElement("rss");
         final List<Post> posts = new ArrayList<Post>();
@@ -71,12 +73,7 @@ public class AndroidSaxFeedParser extends BaseFeedParser {
         });
 
 
-        try {
-            Xml.parse(this.getInputStream(), Xml.Encoding.UTF_8,
-                    root.getContentHandler());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        Xml.parse(this.getInputStream(), Xml.Encoding.UTF_8, root.getContentHandler());
 
         return posts;
     }

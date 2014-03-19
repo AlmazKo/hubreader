@@ -8,4 +8,8 @@
         <item>Избранное</item>
         <item>События</item>
     </string-array>
+
+
+
+    <string name="error_load_data">Error loading data</string>
 </resources>
